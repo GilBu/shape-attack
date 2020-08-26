@@ -17,23 +17,46 @@ MovingObject.prototype.collideWith = function collideWith(otherObject) {
 
 MovingObject.prototype.draw = function draw(ctx) {
   ctx.fillStyle = this.color;
+  if(this.newAngle !== undefined){
+    ctx.save();
+    ctx.beginPath();
+  
+    ctx.lineWidth = 1;
 
-  ctx.beginPath();
+    ctx.translate(this.pos[0], this.pos[1]);
 
-    // ctx.save();
+    if (this.newAngle !== this.angle) {
+      ctx.rotate(this.newAngle - this.angle - 45 * Math.PI / 180);
+    }
+
+    ctx.strokeStyle = "cyan";
+    ctx.shadowBlur = 30;
+    ctx.shadowColor = "blue";
+    ctx.arc(0, 0, 18, -1, 2 * Math.PI * 3/4);
+
+    ctx.stroke();
+    ctx.closePath();
+
     // ctx.translate(this.pos[0], this.pos[1])
+    // ctx.translate(960, 540)
     // if(this.newAngle !== this.angle){
     //   ctx.rotate(this.newAngle - this.angle - 45 * Math.PI / 180);
     //   this.angle = this.newAngle
 
     // }
-    ctx.arc(
-      this.pos[0], this.pos[1], this.radius, 0, 1.5 * Math.PI, true
-    );
+    // ctx.arc(
+    //   this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
+    // );
     // ctx.translate(-this.pos[0], -this.pos[1])
-    // ctx.restore();
-
-  ctx.fill();
+    ctx.restore();
+    // ctx.fill();
+  } else {
+    ctx.beginPath();
+    ctx.arc(
+      this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
+    );
+    ctx.fill();
+  }
 };
 
 MovingObject.prototype.isCollidedWith = function isCollidedWith(otherObject) {

@@ -42,7 +42,8 @@ Player.prototype.power = function power(impulse) {
 };
 
 Player.prototype.relocate = function relocate() {
-  this.pos = this.game.randomPosition();
+  this.pos = [1920 / 2,
+  1080 / 2];
   this.vel = [0, 0];
 };
 
