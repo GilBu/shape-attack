@@ -40,18 +40,18 @@ document.addEventListener('mouseup', function (event) {
 
 GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
   const player = this.player;
-  const move = [0, 0];
+  const mouseDir = [mouse.x, mouse.y];
   player.consSpeed = 20;
-  player.angle = 0;
   if (keyboard.up) player.pos[1] -= player.consSpeed;
   if (keyboard.down) player.pos[1] += player.consSpeed;
   if (keyboard.left) player.pos[0] -= player.consSpeed;
   if (keyboard.right) player.pos[0] += player.consSpeed;
-  player.newAngle = Math.atan2(mouse.y - player.pos[0], mouse.x - player.pos[1]);
-  player.power(move);
+  player.newAngle = Math.atan2(mouse.y - player.pos[1], mouse.x - player.pos[0]);
   
-
-  // key("space", function () { player.fireBullet(); });
+  if (mouse.pressed == true) {
+    player.fireBullet();
+    player.power(mouseDir);
+  }
 };
 
 GameView.prototype.start = function start() {

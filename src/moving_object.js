@@ -7,8 +7,10 @@ function MovingObject(options) {
   this.color = options.color;
   this.game = options.game;
   this.newAngle = options.newAngle;
-  this.angle = options.angle;
-
+  this.mouseDir = options.mouseDir;
+  this.movObjTyp = options.movObjTyp;
+  this.x = options.x;
+  this.y = options.y;
 }
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {
@@ -17,39 +19,22 @@ MovingObject.prototype.collideWith = function collideWith(otherObject) {
 
 MovingObject.prototype.draw = function draw(ctx) {
   ctx.fillStyle = this.color;
-  if(this.newAngle !== undefined){
+  if (this.movObjTyp == "Player"){
     ctx.save();
-    ctx.beginPath();
-  
-    ctx.lineWidth = 1;
-
+    
+    
     ctx.translate(this.pos[0], this.pos[1]);
-
-    if (this.newAngle !== this.angle) {
-      ctx.rotate(this.newAngle - this.angle - 45 * Math.PI / 180);
-    }
-
-    ctx.strokeStyle = "cyan";
-    ctx.shadowBlur = 30;
-    ctx.shadowColor = "blue";
-    ctx.arc(0, 0, 18, -1, 2 * Math.PI * 3/4);
-
+    
+    ctx.rotate(this.newAngle);
+    
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = this.color;
+    ctx.strokeStyle = this.color;
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.arc(0, 0, 18, Math.PI / 4, 1.74 * Math.PI);
     ctx.stroke();
-    ctx.closePath();
-
-    // ctx.translate(this.pos[0], this.pos[1])
-    // ctx.translate(960, 540)
-    // if(this.newAngle !== this.angle){
-    //   ctx.rotate(this.newAngle - this.angle - 45 * Math.PI / 180);
-    //   this.angle = this.newAngle
-
-    // }
-    // ctx.arc(
-    //   this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
-    // );
-    // ctx.translate(-this.pos[0], -this.pos[1])
     ctx.restore();
-    // ctx.fill();
   } else {
     ctx.beginPath();
     ctx.arc(
@@ -67,13 +52,12 @@ MovingObject.prototype.isCollidedWith = function isCollidedWith(otherObject) {
 MovingObject.prototype.isWrappable = true;
 
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
-MovingObject.prototype.move = function move(timeDelta) {
-  
-  const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
-    offsetX = this.vel[0],
-    offsetY = this.vel[1];
-  this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
 
+MovingObject.prototype.move = function move(timeDelta) {
+  const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
+    offsetX = this.vel[0] * velocityScale,
+    offsetY = this.vel[1] * velocityScale;
+  this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
   if (this.game.isOutOfBounds(this.pos)) {
     if (this.isWrappable) {
       this.pos = this.game.wrap(this.pos);
