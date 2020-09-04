@@ -53,7 +53,23 @@ MovingObject.prototype.isWrappable = true;
 
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 
-MovingObject.prototype.move = function move(timeDelta) {
+MovingObject.prototype.move = function move(timeDelta, playerPos) {
+  if (this.movObjTyp === "Enemy") {
+    const newPost = playerPos
+    const xPos = this.pos[0]
+    const yPos = this.pos[1]
+    newPost[0] = xPos;
+    newPost[1] = yPos;
+    const playerVec = Util.scale(Util.dir(newPost), 8);
+    this.vel[0] = playerVec[0];
+    this.vel[1] = playerVec[1];
+    // debugger
+  }
+
+  if (this.movObjTyp === "Bullet") {
+    // debugger
+  }
+
   const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
     offsetX = this.vel[0] * velocityScale,
     offsetY = this.vel[1] * velocityScale;

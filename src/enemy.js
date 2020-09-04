@@ -1,3 +1,5 @@
+// import {player} from "./game"
+// import Player from './player'
 const Util = require("./util");
 const MovingObject = require("./moving_object");
 const Player = require("./player");
@@ -15,7 +17,7 @@ function Enemy(options) {
   options.pos = options.pos || options.game.randomPosition();
   options.radius = DEFAULTS.RADIUS;
   options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
-
+  options.movObjTyp = "Enemy";
   MovingObject.call(this, options);
 }
 

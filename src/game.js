@@ -15,7 +15,7 @@ Game.BG_COLOR = "#000000";
 Game.DIM_X = 1920;
 Game.DIM_Y = 1080;
 Game.FPS = 32;
-Game.NUM_ENEMIES = 10;
+Game.NUM_ENEMIES = 2;
 
 Game.prototype.add = function add(object) {
   if (object instanceof Enemy) {
@@ -82,8 +82,9 @@ Game.prototype.isOutOfBounds = function isOutOfBounds(pos) {
 };
 
 Game.prototype.moveObjects = function moveObjects(delta) {
+  const pos = this.players[0].pos;
   this.allObjects().forEach(function (object) {
-    object.move(delta);
+    object.move(delta, pos);
   });
 };
 
