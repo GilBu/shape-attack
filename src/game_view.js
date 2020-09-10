@@ -41,7 +41,7 @@ document.addEventListener('mouseup', function (event) {
 GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
   const player = this.player;
   const mouseDir = [mouse.x, mouse.y];
-  player.consSpeed = 20;
+  player.consSpeed = 10;
   if (keyboard.up) player.pos[1] -= player.consSpeed;
   if (keyboard.down) player.pos[1] += player.consSpeed;
   if (keyboard.left) player.pos[0] -= player.consSpeed;
