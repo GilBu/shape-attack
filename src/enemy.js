@@ -24,6 +24,7 @@ Util.inherits(Enemy, MovingObject);
 Enemy.prototype.collideWith = function collideWith(otherObject) {
   if (otherObject instanceof Player) {
     otherObject.relocate();
+    this.remove();
     return true;
   } else if (otherObject instanceof Bullet) {
     this.remove();
