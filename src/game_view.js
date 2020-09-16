@@ -47,9 +47,9 @@ document.addEventListener("mousemove", function (event) {
   const canvas = document.getElementById("canvas");
   const rect = canvas.getBoundingClientRect();
 
-  window.addEventListener("resize", () => {
-    rect = canvas.getBoundingClientRect();
-  });
+  // window.addEventListener("resize", () => {
+  //   rect = canvas.getBoundingClientRect();
+  // });
 
   mouse.x = event.clientX - rect.left;
   mouse.y = event.clientY - rect.top;
@@ -94,7 +94,6 @@ GameView.prototype.animateGame = function animateGame(time) {
 
 GameView.prototype.start = function start(e) {
   if (e.keyCode === 13 || e.button === 0) {
-    console.log('start Called')
     this.canvasEl.removeEventListener("click", this.start);
     this.page.removeEventListener("keydown", this.start);
   this.lastTime = 0;
