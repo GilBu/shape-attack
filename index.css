@@ -12,12 +12,40 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: auto;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 canvas {
-    padding-left: 0;
+    /* padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    display: block; */
+}
+
+.instructions {
+  white-space: pre;
+  color: white;
+}
+
+.footer-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  /* min-height: 5vh; */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.footer-container > a {
+  margin: 20px 40px;
 }
