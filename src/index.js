@@ -15,8 +15,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameView = new GameView(game, ctx, canvasEl, page)
   const title = new Title(ctx, canvasEl);
   title.drawStartClick();
-  canvasEl.addEventListener('click', gameView.start.bind(gameView));
-  page.addEventListener("keydown", gameView.start.bind(gameView));
+  const clickHandler = (e) => {
+    gameView.start(e);
+    canvasEl.removeEventListener("click", clickHandler);
+  }
+
+  const keydownHandler = (e) => {
+    gameView.start(e);
+    if (e.keyCode === 13){
+      page.removeEventListener("keydown", keydownHandler);
+    }
+  };
+
+  canvasEl.addEventListener("click", clickHandler);
+  page.addEventListener("keydown", keydownHandler);
   // gameView.start();
   title.drawTitle();
   // new GameView(game, ctx).start();

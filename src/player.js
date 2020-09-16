@@ -17,12 +17,7 @@ Player.RADIUS = 15;
 Util.inherits(Player, MovingObject);
 
 Player.prototype.fireBullet = function fireBullet() {
-  // const norm = Util.norm(this.mouseDir);
-  // if (norm === 0) {
-  //   // Can't fire unless moving.
-  //   return;
-  // }
-  
+
   let x = 0;
   let y = 0;
   
@@ -41,7 +36,6 @@ Player.prototype.fireBullet = function fireBullet() {
 
   const bulletVel = [
     relVel[0] + x, relVel[1] + y
-    // relVel[0] + this.vel[0], relVel[1] + this.vel[1]
   ];
 
   const bullet = new Bullet({

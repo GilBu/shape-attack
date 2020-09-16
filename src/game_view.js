@@ -44,8 +44,15 @@ document.addEventListener("keyup", function (event) {
 });
 
 document.addEventListener("mousemove", function (event) {
-  mouse.x = event.clientX;
-  mouse.y = event.clientY;
+  const canvas = document.getElementById("canvas");
+  const rect = canvas.getBoundingClientRect();
+
+  window.addEventListener("resize", () => {
+    rect = canvas.getBoundingClientRect();
+  });
+
+  mouse.x = event.clientX - rect.left;
+  mouse.y = event.clientY - rect.top;
 });
 
 document.addEventListener("mousedown", function (event) {
@@ -77,7 +84,6 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
 
 GameView.prototype.animateGame = function animateGame(time) {
   let timeDelta = time - this.lastTime;
-  debugger
   this.bindKeyHandlers();
   this.game.step(timeDelta);
   this.game.draw(this.ctx);
@@ -88,15 +94,9 @@ GameView.prototype.animateGame = function animateGame(time) {
 
 GameView.prototype.start = function start(e) {
   if (e.keyCode === 13 || e.button === 0) {
+    console.log('start Called')
     this.canvasEl.removeEventListener("click", this.start);
     this.page.removeEventListener("keydown", this.start);
-  //   clearInterval(window.startInterval);
-  //   clearInterval(window.overInterval);
-  //   this.canvas.className = "game-screen";
-  //   requestAnimationFrame(this.render);
-  //   this.input.disabled = false;
-  //   this.input.style.display = "block";
-  //   this.input.focus();
   this.lastTime = 0;
   requestAnimationFrame(this.animateGame.bind(this));
   } 

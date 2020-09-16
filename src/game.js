@@ -110,6 +110,10 @@ Game.prototype.remove = function remove(object) {
 Game.prototype.step = function step(delta) {
   this.moveObjects(delta);
   this.checkCollisions();
+  if(this.enemies.length <= 0) {
+    this.addEnemies();
+    Game.NUM_ENEMIES += 1;
+  }
 };
 
 Game.prototype.wrap = function wrap(pos) {
