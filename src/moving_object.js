@@ -35,7 +35,14 @@ MovingObject.prototype.draw = function draw(ctx) {
     ctx.arc(0, 0, 18, Math.PI / 4, 1.74 * Math.PI);
     ctx.stroke();
     ctx.restore();
-  } else {
+  } else if(this.movObjTyp == "Enemy"){
+    ctx.beginPath();
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = this.color;
+    ctx.strokeStyle = this.color;
+    ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);
+    ctx.stroke();
+  }else {
     ctx.beginPath();
     ctx.arc(
       this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true

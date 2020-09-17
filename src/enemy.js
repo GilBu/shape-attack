@@ -4,7 +4,7 @@ const Player = require("./player");
 const Bullet = require("./bullet");
 
 const DEFAULTS = {
-  COLOR: "#505050",
+  COLOR: "red",
   RADIUS: 25,
   SPEED: 3
 };
