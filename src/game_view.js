@@ -98,7 +98,7 @@ GameView.prototype.start = function start(e) {
     this.page.removeEventListener("keydown", this.start);
   this.lastTime = 0;
   requestAnimationFrame(this.animateGame.bind(this));
-  } 
+  }
 };
 
 

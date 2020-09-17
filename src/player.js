@@ -9,6 +9,8 @@ function Player(options) {
   options.color = "cyan";
   options.consSpeed = 20;
   options.movObjTyp = "Player";
+  this.laserSound = new Audio("./assets/sounds/laser1.wav");
+  this.cooldown = false;
   MovingObject.call(this, options);
 }
 
@@ -16,36 +18,58 @@ Player.RADIUS = 15;
 
 Util.inherits(Player, MovingObject);
 
+Player.prototype.sound = function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  };
+  this.stop = function () {
+    this.sound.pause();
+  };
+}
+
 Player.prototype.fireBullet = function fireBullet() {
 
-  let x = 0;
-  let y = 0;
+  if (this.cooldown == false) {
+    let x = 0;
+    let y = 0;
+    
+    if (Math.abs(this.mouseDir[0] - this.pos[0]) > Math.abs(this.mouseDir[1] - this.pos[1]) ){
+      x = (this.mouseDir[0] - this.pos[0]) / Math.abs(this.mouseDir[1] - this.pos[1]);
+      y = (this.mouseDir[1] - this.pos[1]) / Math.abs(this.mouseDir[1] - this.pos[1]);
+    } else {
+      x = (this.mouseDir[0] - this.pos[0]) / Math.abs(this.mouseDir[0] - this.pos[0]);
+      y = (this.mouseDir[1] - this.pos[1]) / Math.abs(this.mouseDir[0] - this.pos[0]);
+    }
+    
+    const relVel = Util.scale(
+      Util.dir([x,y]),
+      Bullet.SPEED
+    );
   
-  if (Math.abs(this.mouseDir[0] - this.pos[0]) > Math.abs(this.mouseDir[1] - this.pos[1]) ){
-    x = (this.mouseDir[0] - this.pos[0]) / Math.abs(this.mouseDir[1] - this.pos[1]);
-    y = (this.mouseDir[1] - this.pos[1]) / Math.abs(this.mouseDir[1] - this.pos[1]);
-  } else {
-    x = (this.mouseDir[0] - this.pos[0]) / Math.abs(this.mouseDir[0] - this.pos[0]);
-    y = (this.mouseDir[1] - this.pos[1]) / Math.abs(this.mouseDir[0] - this.pos[0]);
+    const bulletVel = [
+      relVel[0] + x, relVel[1] + y
+    ];
+  
+    const bullet = new Bullet({
+      pos: this.pos,
+      vel: bulletVel,
+      mouseDir: this.mouseDir,
+      color: this.color,
+      game: this.game
+    });
+    
+    this.game.add(bullet);
+  
+    this.laserSound.play();
+    this.cooldown = true;
+    setTimeout(() => (this.cooldown = false), 300);
   }
-  
-  const relVel = Util.scale(
-    Util.dir([x,y]),
-    Bullet.SPEED
-  );
-
-  const bulletVel = [
-    relVel[0] + x, relVel[1] + y
-  ];
-
-  const bullet = new Bullet({
-    pos: this.pos,
-    vel: bulletVel,
-    mouseDir: this.mouseDir,
-    color: this.color,
-    game: this.game
-  });
-  this.game.add(bullet);
 };
 
 Player.prototype.power = function power(impulse) {
