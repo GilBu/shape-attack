@@ -70,6 +70,14 @@ Game.prototype.draw = function draw(ctx) {
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
   ctx.fillStyle = Game.BG_COLOR;
   ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+  
+  ctx.beginPath();
+  ctx.fillStyle = "white";
+  ctx.font = 'bold 36px "Roboto Slab"';
+  ctx.textAlign = "center";
+  ctx.fillText(`Lives: ${this.players[0].lives}`, 100, 50);
+  ctx.fill();
+  ctx.closePath();
 
   this.allObjects().forEach(function (object) {
     object.draw(ctx);
