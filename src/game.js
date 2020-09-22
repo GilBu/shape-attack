@@ -7,7 +7,7 @@ function Game() {
   this.enemies = [];
   this.bullets = [];
   this.players = [];
-
+  this.score = 0;
   this.addEnemies();
 }
 
@@ -113,6 +113,12 @@ Game.prototype.remove = function remove(object) {
   } else {
     throw new Error("unknown type of object");
   }
+};
+
+Game.prototype.removeAll = function removeAll() {
+    this.bullets = [];
+    this.enemies = [];
+    this.players = [];
 };
 
 Game.prototype.step = function step(delta) {
