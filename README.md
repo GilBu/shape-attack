@@ -22,9 +22,6 @@ Shape Attack is a top down twin stick shooter where you control with WASD and ai
 * Number of Enemies Grow
 
 
-
-
-
 ## Player Shoots
 
 <img src="./assets/screenshots/bullets.png" width=1280 height=auto>
@@ -86,3 +83,10 @@ This function will update the direction and move the enemy object base on the pl
 <img src="./assets/screenshots/increasing-enemies.png" width=1280 height=auto>
 
 After each wave of enemies the number of enemies would incease therefore increasing the diffculty of the game.
+
+
+## Future Features
+
+1. Add Lives
+2. Add Game Over Screen
+3. Add Scores
