@@ -1,3 +1,6 @@
+import Title from "./title";
+import GameOver from "./game_over";
+
 function GameView(game, ctx, canvasEl, page) {
   this.ctx = ctx;
   this.game = game;
@@ -88,7 +91,12 @@ GameView.prototype.animateGame = function animateGame(time) {
   this.game.step(timeDelta);
   this.game.draw(this.ctx);
   this.lastTime = time;
-
+  if (this.player.lives == 0) {
+    const gameOver = new GameOver(this.ctx, this.canvasEl);
+    this.game.removeAll();
+    this.ctx.clearRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
+    gameOver.drawGameOver();
+  }
   requestAnimationFrame(this.animateGame.bind(this));
 };
 
@@ -102,4 +110,4 @@ GameView.prototype.start = function start(e) {
 };
 
 
-module.exports = GameView;
+export default GameView;

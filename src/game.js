@@ -122,16 +122,14 @@ Game.prototype.removeAll = function removeAll() {
 };
 
 Game.prototype.gameOver = function gameOver() {
-  if (this.players[0].lives == 0) {
+  // if (this.players[0].lives == 0) {
     this.removeAll();
-    console.log("hi")
-  }
+  // }
 }
 
 Game.prototype.step = function step(delta) {
   this.moveObjects(delta);
   this.checkCollisions();
-  this.gameOver();
   if(this.enemies.length <= 0) {
     this.addEnemies();
     Game.NUM_ENEMIES += 1;

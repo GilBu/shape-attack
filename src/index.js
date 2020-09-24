@@ -29,7 +29,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   canvasEl.addEventListener("click", clickHandler);
   page.addEventListener("keydown", keydownHandler);
-  // gameView.start();
   title.drawTitle();
-  // new GameView(game, ctx).start();
 });
