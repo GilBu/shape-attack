@@ -12,6 +12,7 @@ function Player(options) {
   this.laserSound = new Audio("./assets/sounds/laser1.wav");
   this.cooldown = false;
   this.lives = 3;
+  this.score = 0;
   MovingObject.call(this, options);
 }
 

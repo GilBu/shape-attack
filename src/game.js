@@ -60,6 +60,9 @@ Game.prototype.checkCollisions = function checkCollisions() {
 
       if (obj1.isCollidedWith(obj2)) {
         const collision = obj1.collideWith(obj2);
+        if (obj1 instanceof Enemy && obj2 instanceof Bullet && collision) {
+          this.score += 10
+        }
         if (collision) return;
       }
     }
@@ -76,6 +79,15 @@ Game.prototype.draw = function draw(ctx) {
   ctx.font = 'bold 36px "Roboto Slab"';
   ctx.textAlign = "center";
   ctx.fillText(`Lives: ${this.players[0].lives}`, 100, 50);
+  ctx.fill();
+  ctx.closePath();
+
+
+  ctx.beginPath();
+  ctx.fillStyle = "white";
+  ctx.font = 'bold 36px "Roboto Slab"';
+  ctx.textAlign = "center";
+  ctx.fillText(`Score: ${this.score}`, 980, 50);
   ctx.fill();
   ctx.closePath();
 
