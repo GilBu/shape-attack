@@ -30,7 +30,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.addEventListener("keyup", function (event) {
-  switch (event) {
+  switch (event.keyCode) {
     case 87:
       keyboard.up = false;
       break;
