@@ -1,4 +1,5 @@
 const MovingObject = require("./moving_object");
+import MovingObject from "./moving_object";
 const Util = require("./util");
 const Bullet = require("./bullet");
 

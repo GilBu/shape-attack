@@ -1,5 +1,6 @@
 const Util = require("./util");
 const MovingObject = require("./moving_object");
+import MovingObject from "./moving_object"
 
 function Bullet(options) {
   options.radius = Bullet.RADIUS;
