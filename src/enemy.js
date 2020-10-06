@@ -1,8 +1,10 @@
 const Util = require("./util");
-const MovingObject = require("./moving_object");
+// const MovingObject = require("./moving_object");
 import MovingObject from "./moving_object";
-const Player = require("./player");
-const Bullet = require("./bullet");
+// const Player = require("./player");
+import Player from "./player";
+// const Bullet = require("./bullet");
+import Bullet from "./bullet";
 
 const COLOR = "red",
   RADIUS = 25,
@@ -10,14 +12,14 @@ const COLOR = "red",
   NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 
 class Enemy extends MovingObject {
-  constructor() {
-    // options = options || {};
-    // options.color = COLOR;
-    // options.pos = options.pos || options.game.randomPosition();
-    // options.radius = RADIUS;
-    // options.vel = options.vel || Util.randomVec(SPEED);
-    // options.movObjTyp = "Enemy";
-    // MovingObject.call(this, options);
+  constructor(options) {
+    super(options)
+    options = options || {};
+    this.color = COLOR;
+    this.pos = options.pos || options.game.randomPosition();
+    this.radius = RADIUS;
+    this.vel = options.vel || Util.randomVec(SPEED);
+    this.movObjTyp = "Enemy";
   }
 
   collideWith(otherObject) {

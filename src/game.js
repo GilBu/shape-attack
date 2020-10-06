@@ -1,7 +1,9 @@
 // const Enemy = require("./enemy");
 import Enemy from "./enemy";
-const Bullet = require("./bullet");
-const Player = require("./player");
+// const Bullet = require("./bullet");
+import Bullet from "./bullet";
+// const Player = require("./player");
+import Player from "./player";
 const Util = require("./util");
 
 const BG_COLOR = "#000000";

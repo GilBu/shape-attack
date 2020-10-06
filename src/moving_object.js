@@ -1,7 +1,9 @@
 const Util = require("./util");
 
+const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
+
 class MovingObject {
-  constructor (options) {
+  constructor(options) {
     this.pos = options.pos;
     this.vel = options.vel;
     this.radius = options.radius;
@@ -12,22 +14,20 @@ class MovingObject {
     this.movObjTyp = options.movObjTyp;
     this.x = options.x;
     this.y = options.y;
+    this.isWrappable = true;
   }
 
-  collideWith(otherObject) {
-    
-  };
-  
+  collideWith(otherObject) {}
+
   draw(ctx) {
     ctx.fillStyle = this.color;
-    if (this.movObjTyp == "Player"){
+    if (this.movObjTyp == "Player") {
       ctx.save();
-      
-      
+
       ctx.translate(this.pos[0], this.pos[1]);
-      
+
       ctx.rotate(this.newAngle);
-      
+
       ctx.shadowBlur = 10;
       ctx.shadowColor = this.color;
       ctx.strokeStyle = this.color;
@@ -36,33 +36,26 @@ class MovingObject {
       ctx.arc(0, 0, 18, Math.PI / 4, 1.74 * Math.PI);
       ctx.stroke();
       ctx.restore();
-    } else if(this.movObjTyp == "Enemy"){
+    } else if (this.movObjTyp == "Enemy") {
       ctx.beginPath();
       ctx.shadowBlur = 10;
       ctx.shadowColor = this.color;
       ctx.strokeStyle = this.color;
       ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);
       ctx.stroke();
-    }else {
+    } else {
       ctx.beginPath();
-      ctx.arc(
-        this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
-      );
+      ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);
       ctx.fill();
     }
-  };
-  
-   isCollidedWith(otherObject) {
+  }
+
+  isCollidedWith(otherObject) {
     const centerDist = Util.dist(this.pos, otherObject.pos);
-    return centerDist < (this.radius + otherObject.radius);
-  };
-  
-  ue;
-  
-  const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
-  
+    return centerDist < this.radius + otherObject.radius;
+  }
+
   move(timeDelta) {
-   
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
       offsetX = this.vel[0] * velocityScale,
       offsetY = this.vel[1] * velocityScale;
@@ -74,11 +67,11 @@ class MovingObject {
         this.remove();
       }
     }
-  };
-  
+  }
+
   remove() {
-    this.game.remove(this); 
-  };
+    this.game.remove(this);
+  }
 }
 
 
