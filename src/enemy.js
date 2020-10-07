@@ -40,7 +40,7 @@ class Enemy extends MovingObject {
     const newPost = Array.from(playerPos);
     newPost[0] -= this.pos[0];
     newPost[1] -= this.pos[1];
-    const playerVec = Util.scale(Util.dir(newPost), DEFAULTS.SPEED);
+    const playerVec = Util.scale(Util.dir(newPost), SPEED);
     this.vel[0] = playerVec[0];
     this.vel[1] = playerVec[1];
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,

@@ -4,6 +4,7 @@ import MovingObject from "./moving_object";
 class Bullet extends MovingObject {
   
   constructor(options) {
+    super(options)
     this.radius = RADIUS;
     this.movObjTyp = "Bullet";
     this.isWrappable = false;
