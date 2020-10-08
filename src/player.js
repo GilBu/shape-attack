@@ -59,6 +59,8 @@ class Player extends MovingObject {
           (this.mouseDir[1] - this.pos[1]) /
           Math.abs(this.mouseDir[0] - this.pos[0]);
       }
+
+      console.log(Bullet.SPEED)
   
       const relVel = Util.scale(Util.dir([x, y]), Bullet.SPEED);
   
