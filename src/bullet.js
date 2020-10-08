@@ -1,17 +1,18 @@
 const Util = require("./util");
-const MovingObject = require("./moving_object");
+import MovingObject from "./moving_object";
 
-function Bullet(options) {
-  options.radius = Bullet.RADIUS;
-  options.movObjTyp = "Bullet";
-  MovingObject.call(this, options);
+class Bullet extends MovingObject {
+  constructor(options) {
+    super(options);
+    this.radius = RADIUS;
+    this.movObjTyp = "Bullet";
+    this.isWrappable = false;
+  }
+  static get SPEED() {
+    return 25;
+  }
 }
 
-Bullet.RADIUS = 2;
-Bullet.SPEED = 25;
+const RADIUS = 2;
 
-Util.inherits(Bullet, MovingObject);
-
-Bullet.prototype.isWrappable = false;
-
-module.exports = Bullet;
+export default Bullet;
