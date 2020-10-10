@@ -7,7 +7,7 @@ const BG_COLOR = "#000000";
 const DIM_X = 1920;
 const DIM_Y = 1080;
 const FPS = 32;
-const NUM_ENEMIES = 6;
+let NUM_ENEMIES = 6;
 
 class Game {
   constructor() {
@@ -19,23 +19,23 @@ class Game {
   }
 
   static get BG_COLOR() {
-    return "#000000";
+    return BG_COLOR;
   }
 
   static get DIM_X () {
-    return 1920;
+    return DIM_X;
   } 
 
   static get DIM_Y () {
-    return 1080;
+    return DIM_Y;
   } 
 
   static get FPS () {
-    return 32;
+    return FPS;
   } 
 
   static get NUM_ENEMIES () {
-    return 6;
+    return NUM_ENEMIES;
   } 
 
   add(object) {
