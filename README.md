@@ -89,4 +89,5 @@ After each wave of enemies the number of enemies would incease therefore increas
 
 ## Future Features
 
-1. TBD
+1. Scoreboard
+2. Return to Title after GameOver
