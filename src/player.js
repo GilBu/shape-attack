@@ -17,6 +17,7 @@ class Player extends MovingObject {
     this.cooldown = false;
     this.lives = 3;
     this.score = 0;
+    this.multiplier = 1;
   }
   
   sound(src) {

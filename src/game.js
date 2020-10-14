@@ -15,6 +15,7 @@ class Game {
     this.bullets = [];
     this.players = [];
     this.score = 0;
+    this.multiplier = 1;
     this.addEnemies();
   }
 
@@ -80,8 +81,12 @@ class Game {
 
         if (obj1.isCollidedWith(obj2)) {
           const collision = obj1.collideWith(obj2);
+          if (obj1 instanceof Enemy && obj2 instanceof Player && collision) {
+            this.multiplier = 1;
+          }
           if (obj1 instanceof Enemy && obj2 instanceof Bullet && collision) {
-            this.score += 10;
+            this.multiplier += 0.1;
+            this.score += 10 * this.multiplier;
           }
           if (collision) return;
         }
