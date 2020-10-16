@@ -104,8 +104,8 @@ GameView.prototype.start = function start(e) {
   if (e.keyCode === 13 || e.button === 0) {
     this.canvasEl.removeEventListener("click", this.start);
     this.page.removeEventListener("keydown", this.start);
-  this.lastTime = 0;
-  requestAnimationFrame(this.animateGame.bind(this));
+    this.lastTime = 0;
+    requestAnimationFrame(this.animateGame.bind(this));
   }
 };
 

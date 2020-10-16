@@ -17,6 +17,7 @@ class Game {
     this.score = 0;
     this.multiplier = 1;
     this.addEnemies();
+    this.playerPos = [0,0]
   }
 
   static get BG_COLOR() {
@@ -132,8 +133,18 @@ class Game {
   }
 
   randomPosition() {
+    // const currentPos = this.setPlayerPos();
+    // let randPos = [0,0];
+    // while(Util.dist(currentPos, randPos) < 850) {
+    //   randPos = [DIM_X * Math.random(), DIM_Y * Math.random()];
+    // }
+    // return randPos;
     return [DIM_X * Math.random(), DIM_Y * Math.random()];
   }
+
+  // setPlayerPos() {
+  //   this.playerPos = this.players[0].pos
+  // }
 
   remove(object) {
     if (object instanceof Bullet) {

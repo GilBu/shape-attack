@@ -5,7 +5,7 @@ import Bullet from "./bullet";
 
 const COLOR = "red",
   RADIUS = 25,
-  SPEED = 3,
+  SPEED = 2,
   NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 
 class Enemy extends MovingObject {
