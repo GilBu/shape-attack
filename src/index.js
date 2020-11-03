@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameView = new GameView(game, ctx, canvasEl, page)
   const title = new Title(ctx, canvasEl);
   title.drawStartClick();
+  title.drawInstructions();
   const clickHandler = (e) => {
     gameView.start(e);
     canvasEl.removeEventListener("click", clickHandler);
@@ -28,3 +29,5 @@ document.addEventListener("DOMContentLoaded", function () {
   page.addEventListener("keydown", keydownHandler);
   title.drawTitle();
 });
+
+//stop animation frame, remove objects, create new canvas

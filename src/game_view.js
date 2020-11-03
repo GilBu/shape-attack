@@ -94,18 +94,21 @@ GameView.prototype.animateGame = function animateGame(time) {
   if (this.player.lives == 0) {
     const gameOver = new GameOver(this.ctx, this.canvasEl);
     this.game.removeAll();
+    //call cancel animation frame
     this.ctx.clearRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
     gameOver.drawGameOver();
   }
   requestAnimationFrame(this.animateGame.bind(this));
 };
 
+//cancel animation frame function
+
 GameView.prototype.start = function start(e) {
   if (e.keyCode === 13 || e.button === 0) {
     this.canvasEl.removeEventListener("click", this.start);
     this.page.removeEventListener("keydown", this.start);
     this.lastTime = 0;
-    requestAnimationFrame(this.animateGame.bind(this));
+    let animationID = requestAnimationFrame(this.animateGame.bind(this));
   }
 };
 

@@ -17,6 +17,7 @@ class Enemy extends MovingObject {
     this.radius = RADIUS;
     this.vel = options.vel || Util.randomVec(SPEED);
     this.movObjTyp = "Enemy";
+    //pass player pos pointer in
   }
 
   collideWith(otherObject) {

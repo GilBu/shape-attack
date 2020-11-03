@@ -13,8 +13,8 @@ body {
   background-size: cover;
   display: flex;
   justify-content: space-between;
+  align-content: space-between;
   flex-direction: column;
-  height: auto;
 }
 
 .game-container {
