@@ -63,7 +63,7 @@ class Game {
       pos: [DIM_X / 2, DIM_Y / 2],
       game: this,
     });
-
+    this.playerPos = player.pos;
     this.add(player);
 
     return player;
@@ -133,13 +133,13 @@ class Game {
   }
 
   randomPosition() {
-    // const currentPos = this.setPlayerPos();
-    // let randPos = [0,0];
-    // while(Util.dist(currentPos, randPos) < 850) {
-    //   randPos = [DIM_X * Math.random(), DIM_Y * Math.random()];
-    // }
-    // return randPos;
-    return [DIM_X * Math.random(), DIM_Y * Math.random()];
+    // const currentPos = this.playerPos;
+    let randPos = [DIM_X * Math.random(), DIM_Y * Math.random()];
+    while(Util.dist([DIM_X / 2, DIM_Y / 2], randPos) < 850) {
+      randPos = [DIM_X * Math.random(), DIM_Y * Math.random()];
+    }
+    return randPos;
+    // return [DIM_X * Math.random(), DIM_Y * Math.random()];
   }
 
   // setPlayerPos() {

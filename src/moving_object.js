@@ -33,7 +33,7 @@ class MovingObject {
       ctx.strokeStyle = this.color;
       ctx.beginPath();
       ctx.lineWidth = 1;
-      ctx.arc(0, 0, 18, Math.PI / 4, 1.74 * Math.PI);
+      ctx.arc(0, 0, 12, Math.PI / 4, 1.74 * Math.PI);
       ctx.stroke();
       ctx.restore();
     } else if (this.movObjTyp == "Enemy") {
@@ -41,7 +41,7 @@ class MovingObject {
       ctx.shadowBlur = 10;
       ctx.shadowColor = this.color;
       ctx.strokeStyle = this.color;
-      ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true);
+      ctx.arc(this.pos[0], this.pos[1], 15, 0, 2 * Math.PI, true);
       ctx.stroke();
     } else {
       ctx.beginPath();
