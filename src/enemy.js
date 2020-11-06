@@ -18,6 +18,7 @@ class Enemy extends MovingObject {
     this.vel = options.vel || Util.randomVec(SPEED);
     this.movObjTyp = "Enemy";
     //pass player pos pointer in
+    //add enemy type varible have moving object draw it base off type
   }
 
   collideWith(otherObject) {
