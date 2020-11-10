@@ -41,7 +41,11 @@ class MovingObject {
       ctx.shadowBlur = 10;
       ctx.shadowColor = this.color;
       ctx.strokeStyle = this.color;
-      ctx.arc(this.pos[0], this.pos[1], 15, 0, 2 * Math.PI, true);
+      if (this.enemyType == "circle"){
+        ctx.arc(this.pos[0], this.pos[1], 15, 0, 2 * Math.PI, true);
+      } else if (this.enemyType == "square"){
+        ctx.strokeRect(this.pos[0], this.pos[1], 15, 15);
+      }
       ctx.stroke();
     } else {
       ctx.beginPath();

@@ -53,8 +53,9 @@ class Game {
   }
 
   addEnemies() {
+    let enemies = ["circle", "square"]
     for (let i = 0; i < NUM_ENEMIES; i++) {
-      this.add(new Enemy({ game: this }));
+      this.add(new Enemy({ game: this }, enemies[[Math.floor(Math.random() * enemies.length)]]));
     }
   }
 

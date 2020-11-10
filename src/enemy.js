@@ -9,7 +9,7 @@ const COLOR = "red",
   NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 
 class Enemy extends MovingObject {
-  constructor(options) {
+  constructor(options, shape) {
     super(options)
     options = options || {};
     this.color = COLOR;
@@ -19,6 +19,7 @@ class Enemy extends MovingObject {
     this.movObjTyp = "Enemy";
     //pass player pos pointer in
     //add enemy type varible have moving object draw it base off type
+    this.enemyType = shape || "circle";
   }
 
   collideWith(otherObject) {
