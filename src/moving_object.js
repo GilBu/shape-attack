@@ -45,6 +45,12 @@ class MovingObject {
         ctx.arc(this.pos[0], this.pos[1], 15, 0, 2 * Math.PI, true);
       } else if (this.enemyType == "square"){
         ctx.strokeRect(this.pos[0], this.pos[1], 15, 15);
+      } else if (this.enemyType == "triangle"){
+        ctx.moveTo(this.pos[0], this.pos[1]);
+        ctx.lineTo(125, 45);
+        ctx.lineTo(45, 125);
+        ctx.closePath();
+        console.log("yaya")
       }
       ctx.stroke();
     } else {
