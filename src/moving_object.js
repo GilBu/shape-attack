@@ -50,7 +50,6 @@ class MovingObject {
         ctx.lineTo(125, 45);
         ctx.lineTo(45, 125);
         ctx.closePath();
-        console.log("yaya")
       }
       ctx.stroke();
     } else {
