@@ -47,12 +47,13 @@ class Enemy extends MovingObject {
     let offsetX = this.vel[0] * velocityScale;
     let offsetY = this.vel[1] * velocityScale;
     if (this.enemyType == "circle"){
-      console.log("test")
-      offsetX = this.vel[0] * Math.cos(Math.tan(this.vel[0]/this.vel[1])) - this.vel[1] * Math.sin(Math.tan(this.vel[0]/this.vel[1]))
-      offsetY = this.vel[0] * Math.sin(Math.tan(this.vel[0]/this.vel[1])) + this.vel[1] * Math.cos(Math.tan(this.vel[0]/this.vel[1]))
-      this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
+      // offsetX = this.vel[0] * Math.cos(Math.tan(this.vel[0]/this.vel[1])) + this.vel[1] * Math.sin(Math.tan(this.vel[0]/this.vel[1]))
+      // offsetY = this.vel[0] * Math.sin(Math.tan(this.vel[0]/this.vel[1])) + this.vel[1] * Math.cos(Math.tan(this.vel[0]/this.vel[1]))
+      // offsetX = this.vel[0] + Math.sin(Math.tan(this.vel[0]/this.vel[1])) / 3;
+      offsetY = this.vel[1] + Math.tan(this.vel[0]/this.vel[1]) * velocityScale / 10;
+      // this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
     } else if (this.enemyType == "square"){
-      this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
+      // this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
     } else if (this.enemyType == "triangle"){
     }
     this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
