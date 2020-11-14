@@ -5,7 +5,7 @@ import Bullet from "./bullet";
 
 const COLOR = "red",
   RADIUS = 25,
-  SPEED = 2,
+  SPEED = 3,
   NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 
 class Enemy extends MovingObject {
@@ -47,10 +47,10 @@ class Enemy extends MovingObject {
     let offsetX = this.vel[0] * velocityScale;
     let offsetY = this.vel[1] * velocityScale;
     if (this.enemyType == "circle"){
-      // offsetX = this.vel[0] * Math.cos(Math.tan(this.vel[0]/this.vel[1])) + this.vel[1] * Math.sin(Math.tan(this.vel[0]/this.vel[1]))
-      // offsetY = this.vel[0] * Math.sin(Math.tan(this.vel[0]/this.vel[1])) + this.vel[1] * Math.cos(Math.tan(this.vel[0]/this.vel[1]))
-      // offsetX = this.vel[0] + Math.sin(Math.tan(this.vel[0]/this.vel[1])) / 3;
-      offsetY = this.vel[1] + Math.tan(this.vel[0]/this.vel[1]) * velocityScale / 10;
+      // offsetX = this.vel[0] * Math.cos(Math.tan(this.vel[0]/this.vel[1])) 
+      // offsetY = this.vel[1] * Math.sin(Math.tan(this.vel[0]/this.vel[1]))
+      offsetX = Math.sin(this.vel[0])  * velocityScale * 4;
+      offsetY = Math.sin(this.vel[1])  * velocityScale * 4;
       // this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
     } else if (this.enemyType == "square"){
       // this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];

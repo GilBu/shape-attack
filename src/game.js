@@ -88,6 +88,7 @@ class Game {
           }
           if (obj1 instanceof Enemy && obj2 instanceof Bullet && collision) {
             this.multiplier += 0.1;
+            
             this.score += 10 * this.multiplier;
           }
           if (collision) return;

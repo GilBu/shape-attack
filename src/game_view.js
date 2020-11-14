@@ -97,6 +97,7 @@ GameView.prototype.animateGame = function animateGame(time) {
     //call cancel animation frame
     this.ctx.clearRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
     gameOver.drawGameOver();
+    location.reload();
   }
   requestAnimationFrame(this.animateGame.bind(this));
 };
