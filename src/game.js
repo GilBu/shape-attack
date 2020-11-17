@@ -18,6 +18,7 @@ class Game {
     this.multiplier = 1;
     this.addEnemies();
     this.playerPos = [0,0]
+    this.hiScore = 0;
   }
 
   static get BG_COLOR() {
@@ -167,6 +168,7 @@ class Game {
   }
 
   gameOver() {
+    this.hiScore = this.players[0].score;
     // if (this.players[0].lives == 0) {
     this.removeAll();
     // }
