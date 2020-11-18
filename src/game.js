@@ -15,6 +15,7 @@ class Game {
     this.bullets = [];
     this.players = [];
     this.score = 0;
+    this.oldScore = 0;
     this.multiplier = 1;
     this.addEnemies();
     this.playerPos = [0,0]
@@ -91,6 +92,11 @@ class Game {
             this.multiplier += 0.1;
             
             this.score += 10 * this.multiplier;
+            
+            if (this.score - this.oldScore >= 1000) {
+              this.oldScore = this.score * 1;
+              this.players[0].lives += 1;
+            }
           }
           if (collision) return;
         }
