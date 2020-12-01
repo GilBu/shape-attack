@@ -113,5 +113,8 @@ GameView.prototype.start = function start(e) {
   }
 };
 
+GameView.prototype.stop = function stop(e) {
+  cancelAnimationFrame(this.animateGame.bind(this));
+}
 
 export default GameView;
