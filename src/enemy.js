@@ -54,6 +54,7 @@ class Enemy extends MovingObject {
     } else if (this.enemyType == "square"){
       // this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
     } else if (this.enemyType == "triangle"){
+      // pass x,y to redraw
       // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       // ctx.beginPath();
       // ctx.fillStyle = "rgba(0,204,142,0.5)";
