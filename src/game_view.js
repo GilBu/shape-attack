@@ -95,7 +95,7 @@ GameView.prototype.animateGame = function animateGame(time) {
     const gameOver = new GameOver(this.ctx, this.canvasEl);
     this.game.removeAll();
     //call cancel animation frame
-    this.stop(e);
+    this.stop();
     this.ctx.clearRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
     gameOver.drawGameOver();
     location.reload();
